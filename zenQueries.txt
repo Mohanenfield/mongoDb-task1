@@ -1,0 +1,118 @@
+
+
+Creating Table For Student Information:
+use zenClass;
+db.createCollection("stuInfo");
+db.stuInfo.insertMany([
+{
+	
+	"studentName" : "Mohanbabu",
+	"reqNo" : 100,
+	"taskCompleted" : 10,
+	"queries" : "React-Task Query",
+	"attendance" : 55.55
+},
+
+{
+	
+	"studentName" : "Rohit",
+	"reqNo" : 101,
+	"taskCompleted" : 7,
+	"queries" : "Placement QUERY",
+	"attendance" : 35.55
+},
+
+
+{
+	
+	"studentName" : "Gopal",
+	"reqNo" : 102,
+	"taskCompleted" : 8,
+	"queries" : "Hackathaon query",
+	"attendance" : 45.55
+},
+
+
+{
+	
+	"studentName" : "John",
+	"reqNo" : 103,
+	"taskCompleted" : 7,
+	"queries" : "Zen portal query",
+	"attendance" : 65.55
+},
+
+
+{
+	
+	"studentName" : "Uvnesh",
+	"reqNo" : 104,
+	"taskCompleted" : 6,
+	"queries" : "Node JS query",
+	"attendance" : 65.55
+}
+]); 
+
+Creating Table For Mentor Information:
+
+use zenClass;
+db.createCollection("mentInfo");
+db.mentInfo.insertMany([{
+	
+	"MentorName" : "Raghav",
+	"ReqId" : 100,
+	"queries" : "React-Task Query",
+	"status" : "Assigned"
+},
+
+
+{
+	
+	"MentorName" : "SaiMohan",
+	"ReqId" : 101,
+	"queries" : "Placement QUERY",
+	"status" : "Closed"
+},
+
+
+{
+	
+	"MentorName" : "Tamil",
+	"ReqId" : 102,
+	"queries" : "Hackathaon query",
+	"status" : "Resolved"
+},
+
+
+{
+	
+	"MentorName" : "Akbhar",
+	"ReqId" : 103,
+	"queries" : "Zen portal query",
+	"status" : "Assigned"
+},
+
+
+{
+	
+	"MentorName" : "Suman",
+	"ReqId" : 104,
+	"queries" : "Node JS query",
+	"status" : "Closed"
+}
+]); 
+
+Relating two tables:
+
+use zenClass;
+db.mentInfo.aggregate([
+   {
+      $lookup:
+         {
+            from: "stuInfo",
+            localField: "ReqId",
+            foreignField: "reqNo",
+            as: "Action"
+        }
+   }
+])
