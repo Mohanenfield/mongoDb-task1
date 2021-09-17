@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div style="text-align: center;"><h1>Database for ZenClass:</h1></div>
+    
+    <div><h3>Creating Table for Student Information:</h3></div>
+    <div style="text-align: center;" class="student"> <p>use zenClass;</p>
+        <p>db.createCollection("stuInfo")</p>
+     <p>db.stuInfo.insertMany([</p><p>{
+	
+        "studentName" : "Mohanbabu",
+        "reqNo" : 100,
+        "taskCompleted" : 10,
+        "queries" : "React-Task Query",
+        "attendance" : 55.55
+    },</p>
+    <p>{
+	
+        "studentName" : "Rohit",
+        "reqNo" : 101,
+        "taskCompleted" : 7,
+        "queries" : "Placement QUERY",
+        "attendance" : 35.55
+    },</p>
+    <p>{
+	
+        "studentName" : "Gopal",
+        "reqNo" : 102,
+        "taskCompleted" : 8,
+        "queries" : "Hackathaon query",
+        "attendance" : 45.55
+    },</p>
+    <p>{
+	
+        "studentName" : "John",
+        "reqNo" : 103,
+        "taskCompleted" : 7,
+        "queries" : "Zen portal query",
+        "attendance" : 65.55
+    },</p>
+    <p>{
+	
+        "studentName" : "Uvnesh",
+        "reqNo" : 104,
+        "taskCompleted" : 6,
+        "queries" : "Node JS query",
+        "attendance" : 65.55
+    }</p>
+    
+        
+       <p> ])</p></div>
+       <a href="https://imgur.com/GAKGSAK"><img class="image" src="https://i.imgur.com/GAKGSAK.png"/></a>
+        <div style="text-align: center;"><h3><p>use zenClass;</p>
+            db.stuInfo.find();</h3></div>
+            <div><a href="https://imgur.com/3futs9o"><img class="image" src="https://i.imgur.com/3futs9o.png"/></a></div>
+        <div><h3>Creating Table for MentorInformation:</h3></div> 
+
+         <div style="text-align: center;" class="mentor"><p>use zenClass;</p> 
+            <p>db.createCollection("mentInfo");</p>
+    <p>db.mentInfo.insertMany([</p><p>{
+	
+        "MentorName" : "Raghav",
+        "ReqId" : 100,
+        "queries" : "React-Task Query",
+        "status" : "Assigned"
+    },
+</p>
+<p>{
+	
+	"MentorName" : "SaiMohan",
+	"ReqId" : 101,
+	"queries" : "Placement QUERY",
+	"status" : "Closed"
+},</p><p>{
+	
+	"MentorName" : "Tamil",
+	"ReqId" : 102,
+	"queries" : "Hackathaon query",
+	"status" : "Resolved"
+},</p><p>{
+	
+	"MentorName" : "Akbhar",
+	"ReqId" : 103,
+	"queries" : "Zen portal query",
+	"status" : "Assigned"
+},</p><p>{
+	
+	"MentorName" : "Suman",
+	"ReqId" : 104,
+	"queries" : "Node JS query",
+	"status" : "Closed"
+}</p>
+        
+       <p> ])</p></div>
+
+       <div><a href="https://imgur.com/bhYhSEv"><img class="image" src="https://i.imgur.com/bhYhSEv.png" title="source: imgur.com" /></a></div>
+        <div style="text-align: center;"><h3><p>use zenClass;</p>
+            db.mentorInfo.find();</h3></div>
+            <div><a href="https://imgur.com/UtpJHyn"><img class="image" src="https://i.imgur.com/UtpJHyn.png" title="source: imgur.com" /></a></div>
+        <div><h3>Relating two tables:</h3></div>
+
+        <div style="text-align: center;" class="relate"><p>use zenClass;</p>
+            db.mentInfo.aggregate([
+            {
+               $lookup:
+                  {
+                     from: "stuInfo",
+                     localField: "ReqId",
+                     foreignField: "reqNo",
+                     as: "Action"
+                 }
+            }
+         ]) </div>
+    <div><a href="https://imgur.com/qa7nXWn"><img class="image" src="https://i.imgur.com/qa7nXWn.png" title="source: imgur.com" /></a></div>
+
+
+</body>
+</html>
